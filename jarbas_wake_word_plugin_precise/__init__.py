@@ -12,7 +12,7 @@
 #
 import distutils.spawn
 from mycroft.client.speech.hotword_factory import HotWordEngine
-from os.path import join, isfile, expanduser, isdir, dirname
+from os.path import join, isfile, expanduser, isdir
 from petact import install_package
 import platform
 from xdg import BaseDirectory
