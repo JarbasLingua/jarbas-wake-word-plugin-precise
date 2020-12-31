@@ -10,6 +10,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+import distutils.spawn
 from mycroft.client.speech.hotword_factory import HotWordEngine
 from os.path import join, isfile, expanduser, isdir, dirname
 from petact import install_package
@@ -34,7 +35,9 @@ class PreciseHotwordPlugin(HotWordEngine):
         trigger_level = self.config.get('trigger_level', 3)
         sensitivity = self.config.get('sensitivity', 0.5)
         version = self.config.get("version", 0.2)
-        precise_exe = self.config.get("binary_path")
+
+        dist_exe = distutils.spawn.find_executable("precise-engine")
+        precise_exe = self.config.get("binary_path", dist_exe)
         model = self.config.get('model')
 
         if not precise_exe:
